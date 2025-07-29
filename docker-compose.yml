@@ -4,9 +4,16 @@ version: '3.8'
 
 services:
   museum-backend:
-    build: .
-    command: uvicorn app.main:app --host 0.0.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: museum-backend
+    # command: uvicorn app.main:app --host 0.0.0.0
     volumes:
-      - .:/app
+      - .:/code
     ports:
       - 8000:8000
+    environment:
+      - BIND_ADDRESS={BIND_ADDRESS}
+    command: "uvicorn code.app.main:app --host 0.0.0.0 --port 8000"
+    

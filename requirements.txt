@@ -1,4 +1,4 @@
 fastapi
-pip install "fastapi[standard]"
+fastapi[standard]
 uvicorn
 sqlalchemy
